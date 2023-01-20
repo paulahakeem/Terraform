@@ -7,9 +7,9 @@ output "private-ip-ec2" {
 }
 
 output "ec2_attributes" {
-value = {
-public_ip = aws_instance.my-instance.public_ip
-private_ip = aws_instance.my-instance1.private_ip
-instance_id = aws_instance.my-instance1.id
-}
+  value = {
+    public_ip   = aws_instance.my-instance.public_ip
+    private_ip  = aws_instance.my-instance1.private_ip
+    instance_id = aws_instance.my-instance1.id
+  }
 }

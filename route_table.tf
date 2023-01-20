@@ -1,10 +1,10 @@
 resource "aws_route_table" "public-route" {
   vpc_id = aws_vpc.paulavpc1.id
-  
-   route {
-   cidr_block = "0.0.0.0/0"
-   gateway_id = aws_internet_gateway.gw.id
- }
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
   tags = {
     Name = "routeforgw"
   }
@@ -18,10 +18,10 @@ resource "aws_route_table_association" "public-sub" {
 
 resource "aws_route_table" "private-route" {
   vpc_id = aws_vpc.paulavpc1.id
-   route {
-   cidr_block = "0.0.0.0/0"
-   gateway_id = aws_nat_gateway.natway.id
- }
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.natway.id
+  }
   tags = {
     Name = "route-for-nat-gateway"
   }
