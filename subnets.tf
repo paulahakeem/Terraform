@@ -1,9 +1,11 @@
-resource "aws_subnet" "public-subnet1" {
+resource "aws_subnet" "subnets" {
   vpc_id     = aws_vpc.paulavpc1.id
-  cidr_block = "10.0.0.0/24"
+  cidr_block = var.subnet-cidr[count.index]
+  count      = length(var.subnet-cidr)
 
   tags = {
-    Name = "public_subnet1"
+    Name  = var.subnet-names[count.index]
+    count = length(var.subnet-names)
   }
+
 }
-#"subnet-06154ea406d837327"

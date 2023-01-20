@@ -24,14 +24,27 @@ resource "aws_security_group" "secg" {
   }
 }
 
+resource "aws_security_group" "privseg1" {
+  vpc_id      = aws_vpc.paulavpc1.id
+  name        = "paulaprivseg"
+  description = "Allow SSH access"
 
-#resource "aws_security_group" "example" {
-#description = "Allow all traffic from anywhere"
+  ingress {
+    #ssh
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-#ingress {
-# from_port   = 0
-#to_port     = 65535
-#protocol    = "-1"
-# cidr_blocks = ["0.0.0.0/0"]
-#}
-#}
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+}
+
+
+
